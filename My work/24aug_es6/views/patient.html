@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./../build/patient.build.js"></script>
+</head>
+<body  style="background-color:powderblue;">
+    <h1 >Patient Information</h1>
+<form>
+    <table>
+        <tr>
+            <td>
+                Patient Name<br><br>
+            </td>
+            <td>
+                <input type="text" pattern="[A-Za-z]" id="PatientName" style="text-transform: capitalize;" placeholder="Enter Patient Name" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Doctor Name<br><br>
+            </td>
+            <td>
+                <input type="text" pattern="[A-Za-z]" id="DoctorName" placeholder="Enter Doctor Name" style="text-transform: capitalize;" required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Age<br><br>
+            </td>
+            <td>
+                <input type="number" id="Age" placeholder="Enter Patient Age" min='0' required>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Select Gender<br><br>
+            </td>
+            <td>
+                <div id="gender"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Select Disease<br><br>
+            </td>
+            <td>
+                <div id="disease"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Select Ward<br><br>
+            </td>
+            <td>
+                <div id="ward"></div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                Room No.<br><br>
+            </td>
+            <td>
+                <input type="text" placeholder="Enter Patient Room No." id='RoomNo' required>
+            </td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Submit" id="submit"></td><dr></dr>
+        </tr>
+    </table>
+</form>
+<div id="dvfilter"></div><br>
+<div id="dvfilter2"></div><br>
+    <br>
+    <br>
+    <center>
+    
+    <div style="background-color:tomato;"><table width="100%" id="tableData" ></table></div>
+</center>    
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./../node_modules/bootstrap/dist/css/bootstrap.min.css">
+
+</head>
+<script>
+    window.onload=function(){
+
+        let salary=document.getElementsByClassName("sal");
+        console.log(salary);
+        for(var i=0;i<=salary.length;i++)
+        {
+           var x=parseInt(salary[i].innerHTML)
+            if(x>=200000) {
+                salary[i].parentNode.className="bg-danger";
+            }
+            if(x>=150000 && x<200000) {
+                salary[i].parentNode.className="bg-secondary";
+            }
+           if(x>=10000 && x<150000){
+            salary[i].parentNode.className="bg-primary";
+           }
+        }
+    }
+    </script>
+
+<body>
+
+    <center><h1>Table</h1></center>
+     
+     
+   
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>EmpNo</th>
+                    <th>EmpName</th>
+                    <th>DeptName</th>
+                    <th>Salary</th>   
+                </tr>
+            </thead>
+            <tbody>
+                <tr >
+                    <td>101</td>
+                    <td>A</td>
+                    <td>IT</td>
+                    <td class="sal">400000</td>
+                </tr>
+                <tr >
+                    <td>102</td>
+                    <td>B</td>
+                    <td>HR</td>
+                    <td class="sal">175000</td>
+                </tr>
+                <tr>
+                    <td>103</td>
+                    <td>C</td>
+                    <td>IT</td>
+                    <td class="sal">10000 </td>
+                </tr>
+                <tr>
+                    <td>104</td>
+                    <td>D</td>
+                    <td>HR</td>
+                    <td class="sal">400000</td>
+                </tr>
+               
+                <tr >
+                    <td>105</td>
+                    <td>E</td>
+                    <td>IT</td>
+                    <td class="sal">175000</td>
+                </tr>
+                <tr >
+                    <td>106</td>
+                    <td>F</td>
+                    <td>HR</td>
+                    <td class="sal">100000</td>
+                </tr>
+                <tr >
+                    <td>107</td>
+                    <td>g</td>
+                    <td>HR</td>
+                    <td class="sal">4000000</td>
+                </tr>
+                <tr >
+                    <td>108</td>
+                    <td>i</td>
+                    <td>HR</td>
+                    <td class="sal">175000</td>
+                </tr>
+                <tr >
+                    <td>109</td>
+                    <td>j<jtd>
+                    <td>HR</td>
+                    <td class="sal">100000</td>
+                </tr>
+                <tr >
+                    <td>110</td>
+                    <td>k</td>
+                    <td>HR</td>
+                    <td class="sal">4000000</td>
+                </tr>
+                <tr >
+                    <td>111</td>
+                    <td>l</td>
+                    <td>HR</td>
+                    <td class="sal">175000</td>
+                </tr>
+                <tr >
+                    <td>112</td>
+                    <td>m</td>
+                    <td>HR</td>
+                    <td class="sal">100000</td>
+                </tr>
+                <tr >
+                    <td>113</td>
+                    <td>n</td>
+                    <td>HR</td>
+                    <td class="sal">4000000</td>
+                </tr>
+                <tr >
+                    <td>114</td>
+                    <td>o</td>
+                    <td>HR</td>
+                    <td class="sal">175000</td>
+                </tr>
+                <tr >
+                    <td>115</td>
+                    <td>p</td>
+                    <td>HR</td>
+                    <td class="sal">100000</td>
+                </tr>
+                <tr >
+                    <td>116</td>
+                    <td>Q</td>
+                    <td>HR</td>
+                    <td class="sal">4000000</td>
+                </tr>
+
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

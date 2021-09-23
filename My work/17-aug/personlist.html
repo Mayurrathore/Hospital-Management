@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Table Generation</title>
+    <script>
+        window.onload = function()
+        {
+            var ProductList = [
+                {ProductId:101, ProductName:"Mobile Devices", CategoryName:"Electronics", Price:55000},
+                {ProductId:102, ProductName:"TVs", CategoryName:"Electronics", Price:300},
+                {ProductId:103, ProductName:"Monitors", CategoryName:"Electronics", Price:2100},
+                {ProductId:104, ProductName:"KeyBoard", CategoryName:"Electronics", Price:300},
+                {ProductId:105, ProductName:"Printers", CategoryName:"Electronics", Price:400},
+
+                {ProductId:106, ProductName:"pizza", CategoryName:"Food", Price:30},
+                {ProductId:107, ProductName:"Burger", CategoryName:"Food", Price:80},
+                {ProductId:108, ProductName:"Ice Cream", CategoryName:"Food", Price:100},
+                {ProductId:109, ProductName:"French Fries", CategoryName:"Food", Price:100},
+        
+                {ProductId:110, ProductName:"Shirt", CategoryName:"Clothes", Price:1000},
+                {ProductId:111, ProductName:"Bag", CategoryName:"Clothes", Price:1000},
+                {ProductId:112, ProductName:"Jeans", CategoryName:"Clothes", Price:800},
+                {ProductId:113, ProductName:"Socks", CategoryName:"Clothes", Price:100},
+                {ProductId:114, ProductName:"Jacket", CategoryName:"Clothes", Price:2000},
+               
+                {ProductId:115, ProductName:"soap", CategoryName:"Grocery", Price:150},
+                {ProductId:116, ProductName:"shampoo", CategoryName:"Grocery", Price:250},
+                {ProductId:117, ProductName:"perfume", CategoryName:"Grocery", Price:290},
+                {ProductId:118, ProductName:"body loaction", CategoryName:"Grocery", Price:220},
+
+                {ProductId:119, ProductName:"Cap", CategoryName:"Fashion", Price:150},
+                {ProductId:120, ProductName:"Goggles", CategoryName:"Fashion", Price:300},
+                {ProductId:121, ProductName:"Bracelet", CategoryName:"Fashion", Price:200},
+                {ProductId:122, ProductName:"Shoes", CategoryName:"Fashion", Price:1000},
+                
+                
+            ]
+            var headers = [];
+            for(var temp in ProductList[0])
+            {
+                headers.push(temp);
+            }
+
+            function checkExistence(arr,str)
+            {
+                if(arr.length == 0)
+                {
+                    return false;
+                }
+                for( var i = 0; i < arr.length;i++)
+                {
+                    if(arr[i] == str)
+                    {
+                        return true;
+                    }
+                }
+                return false;
+            }
+
+
+            var cate = [];
+            for(var ind = 0 ; ind < ProductList.length; ind++)
+            {
+                if(!checkExistence(cate,ProductList[ind]['CategoryName']))
+                {
+                    cate.push(ProductList[ind]['CategoryName']);
+                    
+                }
+            }
+
+            console.log(cate);
+
+
+
+            var radioList = document.getElementById('radioList');
+            var radioListHTML = "";
+            for(var i in cate)
+            {
+                radioListHTML += "<input type = 'radio' name = 'productType' value = " + cate[i]+ " id = "+ cate[i]+ ">"+cate[i]+"</input>";
+            }
+            radioListHTML+="<input type = 'radio' name = 'productType' value = 'all' id = 'all'>All</input>";
+            radioList.innerHTML = radioListHTML;
+
+            var tableId = document.getElementById('tableId');
+            var tableHTML = "";
+            
+            
+            function headingHTML()
+            {
+                var temp = "<tr>";
+                for(var headerName in headers)
+                {
+                    temp+= "<th>" +headers[headerName]+ "</th>";
+                }
+                temp+="</tr>";
+                return temp;
+            }
+            function bodyHTML()
+            {
+                var final = "";
+                for(var i = 0; i < ProductList.length;i++)
+                {
+                    var temp = "<tr>";
+                    for(var j = 0; j < headers.length;j++)
+                    {
+                        temp+= "<td>"+ProductList[i][headers[j]]+"</td>"
+                    }
+                    temp+= "</tr>"
+                    final+=temp;
+                }
+                return final;
+            }
+            tableHTML = headingHTML() + bodyHTML();
+            var baseHTML = tableHTML;
+            tableId.innerHTML = tableHTML;
+
+
+            // filter the table one the basis of radio button
+            function filter(cat)
+            {
+                
+                var final = "";
+                for(var i = 0; i < ProductList.length;i++)
+                {
+                    var temp = "<tr>";
+                    if(ProductList[i]['CategoryName'] == cat)
+                    {
+                        for(var j = 0; j < headers.length;j++)
+                            {
+                                temp+= "<td>"+ProductList[i][headers[j]]+"</td>"
+                            }
+                        temp+= "</tr>"
+                        final+=temp;
+                    }
+                }
+                return final;
+            }
+            var productType = document.getElementsByName('productType');
+            // productType.forEach(element=>
+            // {
+            //     console.log(element.checked);
+            // })
+            if(productType.length>0){
+                for(let id=0 ; id < productType.length ; id++)
+                {
+                    productType[id].addEventListener('click',function(){
+                        if(productType[id].value=='all')
+                        {
+                            tableId.innerHTML = baseHTML;
+                        }
+                        else
+                    {tableHTML = headingHTML() + filter(productType[id].value);
+                    tableId.innerHTML = tableHTML;
+                    }
+                },
+                        false);
+                    // console.log(productType[id]);
+                }
+            }
+            // tableId.innerHTML = headingHTML() + filter('Fashion');
+        }
+    </script>
+</head>
+<body>
+    <div id="radioList"></div>
+    <table id = 'tableId'></table>
+</body>
+</html>

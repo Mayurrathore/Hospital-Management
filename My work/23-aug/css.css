@@ -1,0 +1,7 @@
+input:required:valid {
+    border-color: greenyellow;
+  }
+input:invalid {
+    border-color: rgb(255, 0, 0);
+  }
+ 

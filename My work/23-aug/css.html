@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="css.css">
+    <script>
+        window.onload = function () {
+            let input = document.getElementsByClassName("slctclass");
+            let button = document.getElementById("btnsubmit");
+            let count = 0;
+            button.disabled = true;
+            for (var i = 0; i < input.length; i++) {
+
+                input[i].addEventListener("change", function () {
+                    if (document.getElementsByClassName("slctclass").value === "") {
+
+                    }
+                    else {
+
+                        count++;
+                    }
+                    if (count == input.length) {
+                        button.disabled = false;
+                    }
+                }, false)
+            }
+
+            button.addEventListener('click', function () {
+                if (count == input.length) {
+
+                    console.log(count, input.length);
+                }
+            }, false)
+
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Registration Form</h1>
+    <div id="maindv">
+        <form name="frmdata">
+            <div>
+                First Name: <input class="slctclass" type="text" pattern="[A-Za-z]{1,15}" id="txtfname" name="fname"
+                    required placeholder="Enter First name"><br><br>
+            </div>
+            <div>
+                Middle Name: <input class="slctclass" type="text" pattern="[A-Za-z]{1,15}" id="txtmname" name="mname"
+                    placeholder="Enter Middle name"><br><br>
+            </div>
+            <div>
+                Last Name: <input class="slctclass" type="text" pattern="[A-Za-z]{1,15}" id="txtlname" name="lname"
+                    required placeholder="Enter Last name"><br><br>
+            </div>
+            <div>
+                Age: <input required class="slctclass" type="number" id="txtage" name="age" min="18" max="99"><br><br>
+            </div>
+            <div>
+                Email: <input class="slctclass" type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$"
+                    id="email" name="lname" required placeholder="Enter Mail address"><br><br>
+            </div>
+            <div>
+                Phone Number: <input readonly type="text" name="country code" value="+91" size="2" class="pnumber" />
+                <input required class="slctclass" type="number" name="phone" size="10" class="pnumber" /> <br> <br>
+            </div>
+            <div>
+                Mobile Number: <input readonly type="text" name="country code" value="+91" size="2" class="mnumber" />
+                <input required class="slctclass" pattern="[0-9]{7}" type="number" name="mobile" size="10"
+                    min="1000000000" max="9999999999" class="mnumber" /> <br> <br>
+
+            </div>
+            <div aria-required="true">
+                Gender:<br>
+                <input type="radio" name="gender" value="male">Male
+                <input type="radio" name="gender" value="female">Female
+                <input type="radio" name="gender" value="transgender">Transgender
+            </div><br>
+            <div>
+                <input type="submit" id="btnsubmit" value="submit">
+            </div>
+
+        </form>
+
+    </div>
+</body>
+
+</html>

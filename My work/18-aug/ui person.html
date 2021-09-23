@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./ui person.js"></script>
+    <script>
+        window.onload = function()
+        {
+            var PersonDetail = [];
+            var header = ['PersonId','Name','City','Age','Gen'];
+            
+            var id = 101;
+            
+
+            var template = document.getElementById('template');
+            var templateHTML = ""
+            for(let i = 1 ; i < header.length ; i++ )
+            {
+                if(header[i]=='Gen')
+                {
+                    templateHTML+="<div>"+header[i]+"</div>"+"<select id='Gen'><option>--Select Gender--</option><option value='Male'>Male</option><option value='Female'>Female</option></select>";
+                }
+                else
+                templateHTML+="<div>"+header[i]+"</div><input type = 'text' id = "+header[i]+"></input><br>";
+            }
+            template.innerHTML = templateHTML;
+            // template ends here
+
+
+            // adding the event on button click
+
+            var btnSub = document.getElementById('sub');
+            btnSub.addEventListener('click',function()
+            {
+                let temp = {};
+                temp[header[0]] = id;
+                for(let i = 1 ; i < header.length ; i++)
+                {
+                    temp[header[i]] = document.getElementById(header[i]).value;
+                    document.getElementById(header[i]).value = "";                    
+                }
+                id++;
+                PersonDetail.push(temp);
+                console.log(PersonDetail);
+                document.getElementById('cont').innerHTML = listOfPerson(PersonDetail,header);
+            }
+            ,false)
+        }
+    </script>
+</head>
+<body>
+    <h1>Enter the Persons Details</h1>
+    <div id = "template"></div>
+    <br>
+    <button id="sub">Submit</button>
+    <br>
+    <table id="cont"></table>
+</body>
+</html>

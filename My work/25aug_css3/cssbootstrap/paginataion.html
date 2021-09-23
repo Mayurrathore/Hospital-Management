@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .color {
+            background-color:rgb(126, 226, 218);
+            font-family: cursive;
+            }
+       
+        .table-hover thead tr:hover th  {
+            background-color: #D1D119;
+            text-align: center;
+    
+        
+            }
+        .table-hover tbody tr:hover td{
+            background-color: crimson;
+            font-family: fantasy;
+            text-align: center;
+    
+    }
+        </style>
+    <link rel="stylesheet" href="./../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <script>
+        window.onload = function(){
+
+            document.getElementById('1').addEventListener('click', function(){
+                console.log('button 1 is pressed');
+                let a = document.getElementsByClassName('first');
+                table(a);
+            }, false)
+
+            document.getElementById('2').addEventListener('click', function(){
+                console.log('button 2 is pressed');
+                let b = document.getElementsByClassName('second');
+                table(b);
+            }, false)
+
+            document.getElementById('3').addEventListener('click', function(){
+                let c = document.getElementsByClassName('third');
+                table(c);
+            },false)
+
+            document.getElementById('4').addEventListener('click', function(){
+                let d = document.getElementsByClassName('four');
+                table(d);
+            },false)
+
+            function table(x){
+                let y ="";
+                for (let i=0; i<x.length; i++){
+                    y+= `<tr> ${x[i].innerHTML} </tr>`;}
+                document.getElementById('TableBody').innerHTML = y;}
+        }
+    </script>
+</head>
+<body class="color" style="padding: 20px;">
+    <center><br><h3>The Pagination with Alignment</h3><br></center>
+    
+            <div class="table-hover">
+                <table class="table table-bordered ">
+                    <thead>
+                        <tr >
+                            <th>EmpNo</th><th>EmpName</th><th>DeptName</th><th>Salary</th></tr>
+                        <tbody id="TableBody"> </tbody>
+                    </thead>
+                </table>
+            </div>
+        <div class="table-responsive" >
+            <table hidden = true>
+                <thead>
+                    <tr ><th>EmpNo</th><th>EmpName</th><th>DeptName</th><th>Salary</th></tr>
+                </thead>
+                <tbody  >
+                    <tr class="first" ><td>101</td><td>A</td><td>IT</td><td>400000</td></tr>
+                    <tr class="first"><td>102</td><td>B</td><td>HR</td><td>175000</td></tr>
+                    <tr class="first"><td>103</td><td>C</td><td>IT</td><td>10000 </td></tr>
+                    <tr class="first"><td>104</td><td>D</td><td>HR</td><td>400000</td></tr>
+                    <tr class="first"><td>105</td><td>E</td><td>IT</td><td>175000</td></tr>
+                    <tr class="second"><td>106</td><td>F</td><td>HR</td><td>100000</td></tr>
+                    <tr class="second"><td>107</td><td>G</td><td>HR</td><td>4000000</td></tr>
+                    <tr class="second"><td>108</td><td>H</td><td>HR</td><td>175000</td></tr>
+                    <tr class="second"><td>109</td><td>I<jtd><td>HR</td><td>100000</td></tr>
+                    <tr class="second"><td>110</td><td>J</td><td>HR</td><td>4000000</td></tr>
+                    <tr class="third"> <td>111</td><td>K</td><td>HR</td><td>175000</td></tr>
+                    <tr class="third"><td>112</td><td>L</td><td>HR</td><td>100000</td></tr>
+                    <tr class="third"><td>113</td><td>M</td><td>HR</td><td>4000000</td></tr>
+                    <tr class="third"><td>114</td><td>N</td><td>HR</td><td>175000</td></tr>
+                    <tr class="third"><td>115</td><td>O</td><td>HR</td><td>100000</td></tr>
+                    <tr class="four"><td>116</td><td>P</td><td>HR</td><td>4000000</td></tr>
+                    <tr class="four"><td>117</td><td>Q</td><td>HR</td><td>4000000</td></tr>
+                    <tr class="four"><td>118</td><td>R</td><td>HR</td><td>4000000</td></tr>
+                    <tr class="four"><td>119</td><td>S</td><td>HR</td><td>4000000</td></tr>
+                    <tr class="four"><td>120</td><td>T</td><td>HR</td><td>4000000</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <br>        
+        <ul class="pagination pagination-sm justify-content-center">
+            
+            <li class="page-item">
+                <a class="page-link" href="#" id="1">1</a>
+            </li>
+            <li class="page-item ">
+                <a  class="page-link" href="#" id="2" active>2</a>
+            </li>
+            <li  class="page-item">
+                <a class="page-link" href="#" id="3">3</a>
+            </li>
+            <li  class="page-item">
+                <a class="page-link" href="#" id="4">4</a>
+            </li>
+           
+        </ul>
+        <br>
+</body>
+</html>

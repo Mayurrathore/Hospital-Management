@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        table,
+        th,
+        td
+    </style>
+    <script src="index.js"></script>
+    <script>
+        var header = ['ProductRowId', 'ProductId', 'ProductName', 'CategoryName', 'Manufacturer', 'Price', 'Description'];
+        createDb();
+        getAllEntries();
+        totalEnteries();
+
+
+
+        window.onload = function () {
+            getAllEntries();
+            console.log(dbEntries);
+            document.getElementById('submit').addEventListener(
+                'click', function () {
+                    totalEnteries();
+                    storeData();
+                },
+                false)
+
+
+            document.getElementById('btnclear').addEventListener('click', function () {
+                clear();
+            }, false)
+
+            document.getElementById('submit').addEventListener('click', function () {
+
+                getAllEntries();
+                document.getElementById('dataBase').innerHTML = generateHeading() + generateBody();
+            }, false)
+
+
+
+            document.getElementById('getTable').addEventListener('click', function () {
+                getAllEntries();
+                document.getElementById('dataBase').innerHTML = generateHeading() + generateBody();
+            }, false)
+
+
+            document.getElementById('deleteTable').addEventListener('click', function () {
+                deleteDb();
+            }, false)
+
+
+            document.getElementById('Manufacturer').innerHTML = dropDownFunc(['Tata', 'IBM', 'MacD', 'Bajaj', 'Google', 'Microsoft', 'Amazon']);
+            document.getElementById('CategoryName').innerHTML = dropDownFunc(['Electrical', 'Electronics', 'Food', 'Fashion', 'Software', 'Hardware']);
+        }
+    </script>
+</head>
+
+<body>
+    <div id="body">
+        Enter Product Name : - <br>
+        <input type="text" id="ProductName" style="text-transform: capitalize;" class="c"><br><br>
+        Select Product Category: <br>
+        <select id="CategoryName" class="c"></select><br><br>
+        Select Manufacturer:<br>
+        <select id="Manufacturer" class="c"></select><br><br>
+        Enter Price : <br>
+        <input type="number" min='0' id="Price" class="c"><br><br>
+        Description : <br>
+        <input type="text" id="Description" style="text-transform: capitalize;" class="c"><br><br>
+        <button id="submit">Submit</button>
+        <button id="getTable">update Table</button>
+        <button id="deleteTable">Delete DataBase</button>
+        <button id="btnclear">Clear</button>
+    </div>
+    <table id="dataBase" style="width: 50%;"></table>
+</body>
+
+</html>
