@@ -1,0 +1,32 @@
+html {
+  font-family: Arial;
+  font-size: 16px;
+}
+
+.sidebar {
+  position:absolute;
+  width: 14%;
+  height: 150vh;
+  background: black;
+  font-size: 0.90em;
+}
+  li {
+    position: absolute;
+    margin: 4.2em 0;
+  }
+    a {
+      line-height: 5em;
+      text-transform: uppercase;
+      text-decoration: none;
+      letter-spacing: 0.2em;
+      color: rgba(#FFF, 0.35);
+      display: block;
+      transition: all ease-out 300ms;
+    }
+    img {
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      width: 100%;
+      height: 70px;
+    }
