@@ -1,0 +1,54 @@
+<!DOCTYPE html>    
+<html>    
+<head>    
+    <title>Login Form</title>    
+  <link rel="stylesheet" href="css.css">    
+</head>   
+<script>
+    var attempt = 3;
+    function validate() {
+
+            var username = document.getElementById("Uname").value;
+            var password = document.getElementById("pass").value;
+            if (username == "Mayur" && password == "rathore") {
+                alert("Login successfully");
+                window.location.href = "home1.html";
+                return false;}
+            else {
+                    attempt--;
+                    alert("You have left " + attempt + " attempt;");
+                    if (attempt == 0) {
+                        document.getElementById("username").disabled = true;
+                        document.getElementById("password").disabled = true;
+                        document.getElementById("submit").disabled = true;
+                        return false;
+            }
+        }
+    }
+
+    
+
+</script>
+<body>    
+    <h1>Login Page</h1><br>    
+    
+    <div class="login">    
+       
+    <form id="login" >    
+        <label><b>User Name     
+        </b>    
+        </label>    
+        <input type="text" name="Uname" id="Uname" placeholder="Username" required>    
+        <br><br>    
+        <label><b>Password     
+        </b>    
+        </label>    
+        <input type="Password" name="Pass" id="pass" placeholder="Password" required>    
+        <br><br>    
+        <input onclick="validate()" type="button" name="log" id="log" value="Log In Here"/>       
+        <br><br>  
+        <span><b class="note">Note : </b>use following username and password. <br/><b class="valid">User Name : Mayur<br/>Password : rathore</b></span>
+    </form>     
+</div>    
+</body>    
+</html>   

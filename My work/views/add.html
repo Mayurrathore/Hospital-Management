@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="css.css"> 
+    <script>
+        function postdata() {
+        document.getElementById('demo').style.visibility = 'visible';
+        document.getElementById('pId').style.visibility = 'hidden';
+        document.getElementById('pName').style.visibility = 'visible';
+        document.getElementById('pcat').style.visibility = 'visible';
+        document.getElementById('pman').style.visibility = 'visible';
+        document.getElementById('pprice').style.visibility = 'visible';
+        document.getElementById('submit').onclick = ()=>{
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("te").innerHTML =
+            this.responseText;
+          }
+        };
+          xhttp.open("POST", "http://localhost:9081/api/productDetails/", true);
+          xhttp.setRequestHeader(
+          'Content-type', 'application/json');
+          console.log(JSON.stringify({"product_name": document.getElementById('pName').value, "product_category" : document.getElementById('pcat').value, "product_Manufacturing" : document.getElementById('pman').value, "Product_price" : document.getElementById('pprice').value}))
+          xhttp.send(JSON.stringify({"product_name": document.getElementById('pName').value, "product_category" : document.getElementById('pcat').value, "product_Manufacturing" : document.getElementById('pman').value, "Product_price" : document.getElementById('pprice').value}));
+      }
+    }
+    </script>
+</head>
+<body>    
+    <h1>Add New Product </h1><br>    
+    <div class="login">    
+    <form id="login" method="get">    
+        <label><b>Product Id     
+        </b>    
+        </label>    
+        <input type="text" name="product-ID" id="pId" placeholder="Product ID" required>    
+        <br><br> 
+        
+        <label><b>Product Name    
+        </b>    
+        </label>    
+        <input type="text" name="Product Name" id="pName" placeholder="Product Name" required>    
+        <br><br>
+
+        <label><b> Catrgory Name     
+        </b>    
+        </label>    
+        <input type="text" name="Catrgory Name" id="pcat" placeholder="Catrgory Name" required>    
+        <br><br>
+
+        <label><b> Manufacturer Name     
+        </b>    
+        </label>    
+        <input type="text" name="Manufacturer Name" id="pman" placeholder="Manufacturer Name" required>    
+        <br><br>
+        <label><b>price of product    
+        </b>    
+        </label>    
+        <input type="text" name="price" id="pprice" placeholder="price of product" required>    
+        <br><br>
+        <input  onclick="postdata()" type="submit" name="log" id="sub" value="submit">       
+        <br><br>    
+    </form>     
+</div>   
+
+</body>
+</html>

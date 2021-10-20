@@ -1,0 +1,80 @@
+{
+    "data" :[{
+    "id": 1,
+    "firstName": "Beverlie",
+    "lastName": "Yeoman",
+    "email": "byeoman0@google.it",
+    "gender": "Female"
+  }, {
+    "id": 2,
+    "firstName": "Mabel",
+    "lastName": "Saurin",
+    "email": "msaurin1@facebook.com",
+    "gender": "Female"
+  }, {
+    "id": 3,
+    "firstName": "Magnum",
+    "lastName": "Moniker",
+    "email": "mmoniker2@geocities.com",
+    "gender": "Male"
+  },
+  {
+    "id": 4,
+    "firstName": "samuel",
+    "lastName": "Jackson",
+    "email": "samuel2@geocities.com",
+    "gender": "Male"
+  },
+  {
+    "id": 5,
+    "firstName": "raju",
+    "lastName": "r",
+    "email": "raju@geocities.com",
+    "gender": "Male"
+  },
+  {
+    "id": 6,
+    "firstName": "raj",
+    "lastName": "r",
+    "email": "raj@geocities.com",
+    "gender": "Male"
+  },
+  {
+    "id": 7,
+    "firstName": "samu",
+    "lastName": "r",
+    "email": "samu@geocities.com",
+    "gender": "Male"
+  },
+  {
+    "id": 8,
+    "firstName": "kilu",
+    "lastName": "k",
+    "email": "kilu@geocities.com",
+    "gender": "Male"
+  },
+  {
+    "id": 9,
+    "firstName": "devi",
+    "lastName": "d",
+    "email": "devi@geocities.com",
+    "gender": "Female"
+  },
+  {
+    "id": 10,
+    "firstName": "mike",
+    "lastName": "r",
+    "email": "mike@geocities.com",
+    "gender": "Male"
+  },
+  {
+    "id": 11,
+    "firstName": "mitt",
+    "lastName": "H",
+    "email": "sadddy@geocities.com",
+    "gender": "Male"
+  }
+  
+]
+   
+}

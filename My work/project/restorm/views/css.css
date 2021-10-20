@@ -1,0 +1,78 @@
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#6abadeba;  
+    font-family: 'Arial';  
+}  
+.login{  
+        width: 382px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 80px;  
+        background: #23463f;  
+        border-radius: 15px ;  
+          
+}  
+.loginn{  
+    width: 500px;  
+    overflow: hidden;  
+    margin: auto;  
+    margin: 20 0 0 450px;  
+    padding: 80px;  
+    background: #23463f;  
+    border-radius: 15px ;  
+      
+}  
+h1{  
+    text-align: center;  
+    color: black;  
+    padding: 20px;  
+}  
+label{  
+    color: #08ffd1;  
+    font-size: 17px;  
+} 
+table, th, td {
+    border: 2px solid goldenrod;
+    border-collapse: collapse;
+  }
+#Uname{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}   
+#pass{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+} 
+#log{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;  
+}  
+#test{  
+    width: 70px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 10px;  
+    color: rgb(255, 0, 64);  
+}  
+span{  
+    color: white;  
+    font-size: 17px;  
+}  
+a{  
+    float: right;  
+    background-color: grey;  
+}    

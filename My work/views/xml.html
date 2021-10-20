@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        varxhttp = newXMLHttpRequest();
+
+        
+        function getdata(){
+            document.getElementById('demo').style.visibility = 'visible';
+            document.getElementById('pName').style.visibility = 'hidden';
+            document.getElementById('pcat').style.visibility = 'hidden';
+            document.getElementById('pman').style.visibility = 'hidden';
+            document.getElementById('pprice').style.visibility = 'hidden';
+            document.getElementById('submit').onclick = () => {
+                console.log("Hello")
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("te").innerHTML =
+                            this.responseText;
+                    }
+                };
+                xhttp.open('GET', `http://localhost:9081/api/productDetails/${document.getElementById('pId').value}​​​​​​`)
+                xhttp.send()
+            }
+        }
+
+        function postdata() {
+            document.getElementById('demo').style.visibility = 'visible';
+            document.getElementById('pId').style.visibility = 'hidden';
+            document.getElementById('pName').style.visibility = 'visible';
+            document.getElementById('pcat').style.visibility = 'visible';
+            document.getElementById('pman').style.visibility = 'visible';
+            document.getElementById('pprice').style.visibility = 'visible';
+            document.getElementById('submit').onclick = () => {
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("te").innerHTML =
+                            this.responseText;
+                    }
+                };
+                xhttp.open("POST", "http://localhost:9081/api/productDetails/", true);
+                xhttp.setRequestHeader(
+                    'Content-type', 'application/json');
+                console.log(JSON.stringify({ "product_name": document.getElementById('pName').value, "product_category": document.getElementById('pcat').value, "product_Manufacturing": document.getElementById('pman').value, "Product_price": document.getElementById('pprice').value }))
+                xhttp.send(JSON.stringify({ "product_name": document.getElementById('pName').value, "product_category": document.getElementById('pcat').value, "product_Manufacturing": document.getElementById('pman').value, "Product_price": document.getElementById('pprice').value }));
+            }
+        }
+        function putdata() {
+            document.getElementById('demo').style.visibility = 'visible';
+            document.getElementById('pId').style.visibility = 'visible';
+            document.getElementById('pName').style.visibility = 'visible';
+            document.getElementById('pcat').style.visibility = 'visible';
+            document.getElementById('pman').style.visibility = 'visible';
+            document.getElementById('pprice').style.visibility = 'visible';
+            document.getElementById('submit').onclick = () => {
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("te").innerHTML =
+                            this.responseText;
+                    }
+                };
+                xhttp.open("PUT", `http://localhost:9081/api/productDetails/${document.getElementById('pId').value}​​​​​​​`, true);
+                xhttp.setRequestHeader(
+                    'Content-type', 'application/json');
+                console.log(JSON.stringify({ "product_name": document.getElementById('pName').value, "product_category": document.getElementById('pcat').value, "product_Manufacturing": document.getElementById('pman').value, "Product_price": document.getElementById('pprice').value }))
+                xhttp.send(JSON.stringify({ "product_name": document.getElementById('pName').value, "product_category": document.getElementById('pcat').value, "product_Manufacturing": document.getElementById('pman').value, "Product_price": document.getElementById('pprice').value }));
+            }
+        }
+
+        function deletedata() {
+            document.getElementById('demo').style.visibility = 'visible';
+            document.getElementById('pId').style.visibility = 'visible';
+            document.getElementById('pName').style.visibility = 'hidden';
+            document.getElementById('pcat').style.visibility = 'hidden';
+            document.getElementById('pman').style.visibility = 'hidden';
+            document.getElementById('pprice').style.visibility = 'hidden';
+            document.getElementById('submit').onclick = () => {
+                console.log("Hello")
+                xhttp.onreadystatechange = function () {
+                    if (this.readyState == 4 && this.status == 200) {
+                        document.getElementById("te").innerHTML =
+                            this.responseText;
+                    }
+                };
+                xhttp.open('DELETE', `http://localhost:9081/api/productDetails/${document.getElementById('pId').value}​​​​​​​`)
+                xhttp.send()
+            }
+        }
+    </script>
+
+
+</head>
+
+<body>
+
+
+</body>
+
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+  <style>
+.btn{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;  
+} 
+.text{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}   
+label{  
+    color: #08ffd1;  
+    font-size: 17px;  
+} 
+.bt{  
+    
+    width: 100px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;  
+} 
+.login{  
+        width: 340px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 350px;  
+        padding: 80px;  
+        background: #23463f;  
+        border-radius: 15px ;  
+          
+}
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#6abadeba;  
+    font-family: 'Arial';  
+}  
+  </style>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <script >
+    var xhttp = new XMLHttpRequest();
+    function getalldata(){
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  var records= this.responseText;
+                  print(records);
+                }
+              };
+              xhttp.open('GET',`http://localhost:9081/api/productDetails/`)
+              xhttp.send();
+}
+
+function print(records)
+            {
+                record = JSON.parse(records);
+                var headers = [];
+        for (var p in record.rows[0]) {
+                    headers.push(p);
+                }
+                var headerRow = '';
+                for (var i = 0; i < headers.length; i++) {
+                    headerRow += "<th>" + headers[i] + "</th>";
+                };
+                console.log(headers);
+                document.getElementById("thead").innerHTML = headerRow;
+                document.getElementById("thead")
+                var tr = '';
+                var flag = 0;
+                for (var i = 0; i < record.rows.length; i++) {
+                    tr += '<tr>';
+                    flag += 1;
+                    for (var j = 0; j < headers.length; j++) {
+                        tr += '<td>' + record.rows[i][headers[j]] + '</td>';
+                    }
+                    tr += "  <td><input class='bt' type = 'button' name='update' value='Update' id='" + record.rows[i].product_id + "'> <input class='bt' type = 'button' name='delete' value='Delete' id='" + record.rows[i].product_id + "'></td> </tr>";
+                }
+                document.getElementById("tbody").innerHTML = tr;
+                if(flag>0){
+            var updatebtn = document.getElementsByName('update');
+            var deletebtn = document.getElementsByName('delete');
+            var id;
+            if (updatebtn.length > 0) {
+                for (var i = 0; i < updatebtn.length; i++) {
+                    id = updatebtn[i].id;
+                    console.log(updatebtn[i]);
+                    console.log(id);
+                    updatebtn[i].addEventListener('click', function(e) {
+                        var id= e.target.id;
+                        console.log(`in id ${id}`);
+                        console.log(typeof(id));
+                        putdata(id);
+                    }, false);
+                }
+            }
+            if (deletebtn.length > 0) {
+                for (var i = 0; i < deletebtn.length; i++) {
+                    console.log("inside");
+                    deletebtn[i].addEventListener('click', function (e) {
+                        console.log(e.target.id);
+                        var id= e.target.id;
+                        console.log(id);
+                        deletedata(id);
+                    }, false);
+                }
+            }
+          }
+            };
+
+      function clear(){
+            document.getElementById("pName").value = '';
+            document.getElementById("pcat").value = '';
+            document.getElementById("pman").value = '';
+            document.getElementById("pprice").value = '';
+            getalldata();
+            
+        };
+    
+    function putdata(id) {
+      id=parseInt(id);
+      console.log(typeof(id));
+        document.getElementById('demo').style.visibility = 'visible';
+        // document.getElementById('pId').style.visibility = 'visible';
+        document.getElementById('pName').style.visibility = 'visible';
+        document.getElementById('pcat').style.visibility = 'visible';
+        document.getElementById('pman').style.visibility = 'visible';
+        document.getElementById('pprice').style.visibility = 'visible';
+        document.getElementById('submit').onclick = ()=>{
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+            document.getElementById("submit").innerHTML =
+            this.responseText;
+            console.log(this.responseText);
+             clear();
+
+          }
+        };
+          xhttp.open("PUT", `http://localhost:9081/api/productDetails/${id}`, true);
+          xhttp.setRequestHeader(
+          'Content-type', 'application/json');
+          console.log(JSON.stringify({"product_name": document.getElementById('pName').value, "product_category" : document.getElementById('pcat').value, "product_Manufacturing" : document.getElementById('pman').value, "Product_price" : document.getElementById('pprice').value}))
+          xhttp.send(JSON.stringify({"product_name": document.getElementById('pName').value, "product_category" : document.getElementById('pcat').value, "product_Manufacturing" : document.getElementById('pman').value, "Product_price" : document.getElementById('pprice').value}));
+      }
+    }
+
+    function deletedata(idd){
+      id=JSON.parse(idd);
+      console.log(typeof(id));
+      console.log(id);
+            xhttp.onreadystatechange = function() {
+                if (this.readyState == 4 && this.status == 200) {
+                  getalldata();
+
+                }
+              };
+              xhttp.open('DELETE',`http://localhost:9081/api/productDetails/${id}`)
+              xhttp.send()
+            }
+    
+  </script>
+
+<body>
+        <div align="center">
+          <h1>Well Come to Home Page</h1>
+        <button  id ="getal" onclick="getalldata()" class="btn">GET all Data</button>
+        <button  onclick="window.location.href='/add.html'" class="btn">Add New Product</button>
+      <br><br><br>
+        <div >
+          <table width=70% border="2px solid" ><thead id="thead"></thead><tbody id="tbody"></tbody></table>
+      </div><br><br>
+      <div id="demo" style="visibility: hidden;" class="login">
+         
+          <label><b>Product Name    
+          </b>    
+          </label>    
+          <input type="text" class="text" id="pName" placeholder="Product Name" required>    
+          <br><br>
+          <label><b> Catrgory Name     
+          </b>    
+          </label>    
+          <input type="text" class="text" id="pcat" placeholder="Catrgory Name" required>    
+          <br><br>
+          <label><b> Manufacturer Name     
+          </b>   
+          </label>    
+          <input type="text" class="text" id="pman" placeholder="Manufacturer Name" required>    
+          <br><br>
+          <label><b>price of product    
+          </b>    
+          </label>    
+          <input type="text" class="text" id="pprice" placeholder="price of product" required>    
+          <br><br>
+          <input   type="submit" class="btn" id="submit" value="Submit Data"> 
+          <br><br>    
+       
+      </div>
+      </div>    
+</div>
+
+</body>
+</html>

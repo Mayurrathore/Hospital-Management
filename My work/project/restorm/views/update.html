@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update product</title>
+    <style>
+        .btn{  
+    align-self: auto;
+    width: 150px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;  
+} 
+.login{  
+        
+        width: 340px;  
+        overflow: hidden;  
+        margin :left;  
+        padding: 50px;  
+        background: #23463f;  
+        border-radius: 15px ;  
+          
+}
+.text{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}   
+label{  
+    color: #08ffd1;  
+    font-size: 17px;  
+} 
+body  
+{  margin: 0;  
+    padding: 0;  
+    background-color:#6abadeba;  
+    font-family: 'Arial';  
+}  
+h1{  
+    text-align: center;  
+    color: black;  
+    padding: 20px;  
+} 
+    </style>
+   
+</head>
+<h1>Update Product </h1><br>  
+<div class="login">    
+     
+<form id="log" method="get">   
+        <label><b>Product ID    
+        </b>    
+        </label>    
+        <input type="text" class="text" id="pid" placeholder="Product ID" required>    
+        <br><br> 
+        <label><b>Product Name    
+        </b>    
+        </label>    
+        <input type="text" class="text" id="pName" placeholder="Product Name" required>    
+        <br><br>
+        <label><b> Catrgory Name     
+        </b>    
+        </label>    
+        <input type="text" class="text" id="pcat" placeholder="Catrgory Name" required>    
+        <br><br>
+        <label><b> Manufacturer Name     
+        </b>    
+        </label>    
+        <input type="text" class="text" id="pman" placeholder="Manufacturer Name" required>    
+        <br><br>
+        <label><b>price of product    
+        </b>    
+        </label>    
+        <input type="text" class="text" id="pprice" placeholder="price of product" required>    
+        <br><br>
+        <input  onclick="postdata()" type="submit" class="btn" id="post" value="Submit Data"> 
+        <input  onclick="window.location.href='/home1.html'" type="submit" class="btn" id="post" value="Home Page">       
+        <br><br>    
+    </form>     
+</div>   
+
+</body>
+</html>

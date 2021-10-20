@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    
+    <style>
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#6abadeba;  
+    font-family: 'Arial';  
+}  
+
+h1{  
+    text-align: center;  
+    color: black;  
+    padding: 20px;  
+}  
+label{  
+    color: #0d0e09;  
+    font-size: 17px;  
+} 
+
+.text{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}   
+
+.log{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;  
+}  
+
+    </style>
+    <script>
+function test(){
+    document.getElementById('log').style.visibility = 'hidden';
+    document.getElementById('reg').style.visibility = 'visible';
+}
+function store(){
+     
+    var name = document.getElementById('name');
+    var pw = document.getElementById('pw');
+    var lowerCaseLetters = /[a-z]/g;
+    var upperCaseLetters = /[A-Z]/g;
+    var numbers = /[0-9]/g;
+    if(name.value.length == 0){
+        alert('Please fill in email');
+
+    }else if(pw.value.length == 0){
+        alert('Please fill in password');
+
+    }else if(name.value.length == 0 && pw.value.length == 0){
+        alert('Please fill in email and password');
+
+    }else if(pw.value.length > 8){
+        alert('Max of 8');
+
+    }else if(!pw.value.match(numbers)){
+        alert('please add 1 number');
+
+    }else if(!pw.value.match(upperCaseLetters)){
+        alert('please add 1 uppercase letter');
+
+    }else if(!pw.value.match(lowerCaseLetters)){
+        alert('please add 1 lovercase letter');
+
+    }else{
+        localStorage.setItem('name', name.value);
+        localStorage.setItem('pw', pw.value);
+        alert('Your account has been created');
+    }
+}
+
+//checking
+function check(){
+    var storedName = localStorage.getItem('name');
+    var storedPw = localStorage.getItem('pw');
+
+    var userName = document.getElementById('userName');
+    var userPw = document.getElementById('userPw');
+    var userRemember = document.getElementById("rememberMe");
+
+   
+    if(userName.value == storedName && userPw.value == storedPw){
+                alert("Login successfully");
+                window.location.href="/home1.html"
+}
+
+               
+    else{
+        alert('Error on login Register your self');     
+    } 
+}
+</script>
+</head>
+<body>
+    <center>
+    <div class="login" >
+        <form name='form-login'id="log" >
+    
+            <h1>SIGN IN</h1>
+    
+            <label for="userName">Email</label>
+            <input type="email" id="userName" placeholder="Username" required class="text"><br><br>
+    
+            <label for="userPw">Password</label>
+            <input type="password" id= "userPw" placeholder="Password" required class="text"><br><br>
+
+            <input id= "login_btn" type="button" value="Login" onclick="check()"  class="log"><br><br>
+            
+            <input id= "new_btn" type="submit" value="New Registation"  onclick="test()" class="log">
+            
+    
+        </form>
+    </div>
+    <div class="login"  >
+        <form name='form-login' id="reg" style="visibility: hidden;"> 
+            <h1>REGISTER</h1>
+            <label for="name">Email</label>
+            <input type="email" id="name" placeholder="Username" required class="text"><br><br>
+            <label for="pw">Password</label>
+            <input type="password" id= "pw" placeholder="Password" required class="text"><br><br>
+          
+            <input id="rgstr_btn" type="submit" value="Register" onclick="store()" class="log">
+        </form>
+    </div>
+</center>
+</body>
+</html>

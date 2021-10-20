@@ -1,0 +1,104 @@
+<!DOCTYPE html>    
+<html>    
+<head>    
+    <title>Login Form</title>    
+ 
+</head>   
+<style>
+body  
+{  
+    margin: 0;  
+    padding: 0;  
+    background-color:#6abadeba;  
+    font-family: 'Arial';  
+}  
+.login{  
+        width: 382px;  
+        overflow: hidden;  
+        margin: auto;  
+        margin: 20 0 0 450px;  
+        padding: 80px;  
+        background: #23463f;  
+        border-radius: 15px ;  
+          
+}  
+ 
+h1{  
+    text-align: center;  
+    color: black;  
+    padding: 20px;  
+}  
+label{  
+    color: #08ffd1;  
+    font-size: 17px;  
+} 
+
+.text{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 3px;  
+    padding-left: 8px;  
+}   
+
+#log{  
+    width: 300px;  
+    height: 30px;  
+    border: none;  
+    border-radius: 17px;  
+    padding-left: 7px;  
+    color: blue;  
+}  
+a{  
+    float: right;  
+    background-color: grey;  
+}    
+</style>
+<script>
+    var attempt = 3;
+    function validate() {
+
+            var username = document.getElementById("Uname").value;
+            var password = document.getElementById("pass").value;
+            if (username == "Mayur" && password == "rathore") {
+                alert("Login successfully");
+                window.location.href = "home1.html";
+                return false;}
+            else {
+                    attempt--;
+                    alert("You have Enter Wrong Id and password only"  + attempt + "attempt left");
+                    if (attempt == 0) {
+                        document.getElementById("username").disabled = true;
+                        document.getElementById("password").disabled = true;
+                        document.getElementById("submit").disabled = true;
+                        return false;}
+                    if (attempt == -1){
+                        alert("You have Attempt severl login cant Login Right Now");
+                    }
+        }
+    }
+
+</script>
+<body>    
+    <h1>Login Page</h1><br>    
+    
+    <div class="login">    
+       
+    <form id="login" >    
+        <label><b>User Name     
+        </b>    
+        </label>    
+        <input type="text" class="text" id="Uname" placeholder="Username" required>    
+        <br><br>    
+        <label><b>Password     
+        </b>    
+        </label>    
+        <input type="Password" class="text" id="pass" placeholder="Password" required>    
+        <br><br>    
+        <input onclick="validate()" type="button" name="log" id="log" value="Log In Here"/>       
+        <br><br>  
+        <!-- <span><b class="note">Note : </b>use following username and password. <br/><b class="valid">User Name : Mayur<br/>Password : rathore</b></span> -->
+    </form>     
+</div>    
+</body>    
+</html>   
