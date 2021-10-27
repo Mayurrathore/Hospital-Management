@@ -48,6 +48,19 @@ class RoomWardDataAccess {
         }
     }
 
+    //get charges 
+
+    async getroomwardfees(req, resp) {
+        const id = req.params.idwr;
+        console.log(`dnameeeeeee${id}`)
+            await sequelize.sync({ force: false });
+            let rows = await RoomwardModel.findOne({ where: { idwr: id } });
+            console.log(`fesssss:-${rows}`)
+            return resp.status(200).send({ message: rows});
+           
+       
+    }
+
     ///Post docient details
     async postroomwardinfo(req, resp) {
         const wr = req.body;

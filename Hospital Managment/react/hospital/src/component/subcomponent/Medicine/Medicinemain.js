@@ -9,7 +9,8 @@ class Medicine extends Component {
         this.state = {
             message: "",
             departments: [],
-            columnHeaders:[] 
+            columnHeaders:[], 
+            designation:""
           }  
           this.serv = new Medicineaxios();
     }
@@ -21,6 +22,21 @@ class Medicine extends Component {
         state : c
       })
           }
+
+          componentDidMount(prevProp)
+          {
+                let token=sessionStorage.getItem('token')
+                let designation = sessionStorage.getItem('Designation')
+                console.log(designation);
+                if(token==null || designation==null)
+                {
+                    this.props.history.push('/');
+                }
+                this.setState({designation  :designation})
+        
+          }
+
+
 ///Delete Function
 handleDelete = (c) => {
 
@@ -62,7 +78,12 @@ getValues() {
           <div align="right">
           <Navbar style={{background:'black',width:1089 ,height:60}} >
           <ul><NavLink link to onClick={this.getValues.bind(this)}  ClassName='active'>Medicine Details</NavLink></ul>
+          {
+            this.state.designation == 'Admin'?
+            <>
           <ul> <NavLink link to='/medicine/Addmedicine' ClassName='active'>Add Medicine</NavLink></ul> 
+          </>:null
+          }
           </Navbar>
           </div>
           <br/>
@@ -81,12 +102,19 @@ getValues() {
                 {this.state.columnHeaders.map((head, i) => (
                   <td key={i}>{doc[head]}</td>
                 ))}
+
+                
+                {
+                  this.state.designation == 'Admin'?
+                  <>
                 <td>
                    <button className="btn btn-dark" onClick={()=>this.handleupdate(doc)}  value={doc}>Update</button>
                 </td>
                 <td>
                     <button className="btn btn-dark" onClick={this.handleDelete.bind(this)} value={doc.medicineid}>Delete</button>
-                </td>
+                </td></>
+                :null
+                }
               </tr>
             ))}
           </tbody>

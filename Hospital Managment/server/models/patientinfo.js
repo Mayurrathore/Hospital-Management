@@ -35,15 +35,23 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    ptmobileno: {
-      type: DataTypes.STRING(45),
-      allowNull: false
-    },
     pttype: {
       type: DataTypes.STRING(45),
       allowNull: false
     },
-    wardtypeid: {
+    Admited: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    dname: {
+      type: DataTypes.STRING(45),
+      allowNull: false,
+      references: {
+        model: 'doctorinfo',
+        key: 'dname'
+      }
+    },
+    idwr: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
@@ -65,10 +73,17 @@ module.exports = function(sequelize, DataTypes) {
         ]
       },
       {
-        name: "wardtypeid",
+        name: "wardtype",
         using: "BTREE",
         fields: [
-          { name: "wardtypeid" },
+          { name: "idwr" },
+        ]
+      },
+      {
+        name: "dname",
+        using: "BTREE",
+        fields: [
+          { name: "dname" },
         ]
       },
     ]

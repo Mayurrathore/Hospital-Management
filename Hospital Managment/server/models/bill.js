@@ -2,51 +2,56 @@ const Sequelize = require('sequelize');
 module.exports = function(sequelize, DataTypes) {
   return sequelize.define('bill', {
     billno: {
+      autoIncrement: true,
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true
     },
-    patientid: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'patientinfo',
-        key: 'ptid'
-      }
-    },
-    doctorfees: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'doctorinfo',
-        key: 'did'
-      }
-    },
-    roomcharges: {
+    Patient_Id: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    roomno: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-      references: {
-        model: 'roomno',
-        key: 'roomno'
-      }
+    Patient_Name: {
+      type: DataTypes.STRING(45),
+      allowNull: false
     },
-    canteenbill: {
+    Patient_Admited: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    Patient_Discharge: {
+      type: DataTypes.DATEONLY,
+      allowNull: false
+    },
+    Days: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    medicinebill: {
+    Doct_Name: {
+      type: DataTypes.STRING(45),
+      allowNull: false
+    },
+    Room_no: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    labcharges: {
+    Medicine_Name: {
+      type: DataTypes.STRING(45),
+      allowNull: false
+    },
+    Medicine_Amount: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    total: {
+    Doc_fees: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    Room_fees: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    Total_amount: {
       type: DataTypes.INTEGER,
       allowNull: false
     }
@@ -61,27 +66,6 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "billno" },
-        ]
-      },
-      {
-        name: "patientid",
-        using: "BTREE",
-        fields: [
-          { name: "patientid" },
-        ]
-      },
-      {
-        name: "doctorfees",
-        using: "BTREE",
-        fields: [
-          { name: "doctorfees" },
-        ]
-      },
-      {
-        name: "roomno",
-        using: "BTREE",
-        fields: [
-          { name: "roomno" },
         ]
       },
     ]

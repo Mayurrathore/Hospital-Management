@@ -3,7 +3,7 @@ import {Route,NavLink, BrowserRouter ,Switch,} from 'react-router-dom'
 import './home.css'
 import Image from "react-bootstrap/Image";
 import footer from './image/hospital.png'
-import pan from './image/homepanel.png'
+// import pan from './image/homepanel.png'
 import "bootstrap/dist/css/bootstrap.css";
 import Addproduct from './patient/addpatient';
 import Patient from './patient/patientmain';
@@ -31,6 +31,8 @@ import Authuser from './user/usersmain';
 import Adduserr from './user/adduser';
 import Updateuserr from './user/Updateuser';
 import { Navbar } from 'react-bootstrap';
+import Bill from './patient/allbill';
+import Medi from './patient/medi';
 class Home extends Component {
 
     constructor(props){
@@ -62,21 +64,22 @@ handlelogout(){
      
       return (
         <>
-     <div class="bg_image" style={{ backgroundImage: 'url('+pan+')',backgroundSize: "cover",height: "150vh",color: "#f5f5f5"}}>
+     {/* <div class="bg_image" style={{ backgroundImage: 'url('+pan+')',backgroundSize: "cover",height: "170vh",color: "#f5f5f5"}}> */}
         <BrowserRouter>
         <div className='calculator card'>
         <main class="main">
-       
+      
               <aside class="sidebar">
              
-                         <NavLink link to='/homepage' className='active'> <img src={Imgg} /></NavLink>   
+                         <NavLink link to='/homepage' className='active'> <img src={Imgg} /></NavLink>
+                             
              <ul >
                       <li>
-                        <strong User Name>{this.state.User}</strong>   
+                     <> <strong style={{color:"red",alignItems:'center'}} >{`Hii..  ${this.state.User}`}</strong>  </>
                       {
                         this.state.designation == 'Admin' ?
                         <>
-                          <NavLink link to ='/user' className='active'>Register <i class="fa fa-user-plus" style={{color:'white',fontSize:25}}></i> </NavLink>
+                          <NavLink link to ='/user' className='active'>Register <i class="fa fa-user-plus" style={{color:'white',fontSize:25}}></i></NavLink>
                           <NavLink link to='/patient' ClassName='active'> Patient <i class="fa fa-hospital-user" style={{color:'white',fontSize:25}}></i></NavLink>
                           <NavLink link to='/doctor' ClassName='active'>Doctor <i class="fa fa-user-md" style={{color:'white',fontSize:25}}></i></NavLink>
                           <NavLink link to='/nurse' ClassName='active'>Nurse <i class="fa fa-user-nurse" style={{color:'white',fontSize:25}}></i></NavLink>
@@ -89,15 +92,16 @@ handlelogout(){
                          this.state.designation == 'Doctor' ? 
                         <>
                         <NavLink link to='/patient' ClassName='active'>Patient <i class="fa fa-hospital-user" style={{color:'white',fontSize:25}}></i></NavLink>
-                        <NavLink link to='/nurse' ClassName='active'>Nurse <i class="fa fa-user-nurse" style={{color:'white',fontSize:25}}></i></NavLink>
+                        <NavLink link to='/medicine' ClassName='active'>Medicine <i class="fa fa-clinic-medical" style={{color:'white',fontSize:25}}></i></NavLink>
+                        {/* <NavLink link to='/nurse' ClassName='active'>Nurse <i class="fa fa-user-nurse" style={{color:'white',fontSize:25}}></i></NavLink> */}
                         <NavLink link to='/roomward' ClassName='active'>Ward Room <i class="fa fa-male" style={{color:'white',fontSize:25}}></i></NavLink>
                         </>
                          :
-                         this.state.designation == 'Nurse' ? 
+                         this.state.designation == 'Account' ? 
                         <>
                         <NavLink link to='/patient' ClassName='active'>Patient <i class="fa fa-hospital-user" style={{color:'white',fontSize:25}}></i></NavLink>
                         {/* <NavLink link to='/nurse' ClassName='active'>Nurse <i class="fa fa-user-nurse" style={{color:'white',fontSize:25}}></i></NavLink> */}
-                        <NavLink link to='/roomward' ClassName='active'>Ward Room <i class="fa fa-male" style={{color:'white',fontSize:25}}></i></NavLink>
+                        {/* <NavLink link to='/roomward' ClassName='active'>Ward Room <i class="fa fa-male" style={{color:'white',fontSize:25}}></i></NavLink> */}
                         </>
                          :
                         null
@@ -106,6 +110,7 @@ handlelogout(){
                       </li>
                   </ul>
                   </aside>  
+                
                   
         </main>
        
@@ -137,6 +142,8 @@ handlelogout(){
                           <Route exact path='/user' component={Authuser}/>
                           <Route exact path='/user/Adduser' component={Adduserr}/>
                           <Route exact path='/user/updatuser' component={Updateuserr}/>
+                          <Route exact path='/patient/bill' component={Bill}/>
+                          <Route exact path='/patient/medi' component={Medi}/>
                        </Switch>
 
                   </div>
@@ -144,7 +151,7 @@ handlelogout(){
 
           </BrowserRouter>
         
-           </div>
+           {/* </div> */}
            <div >
 
            </div> 

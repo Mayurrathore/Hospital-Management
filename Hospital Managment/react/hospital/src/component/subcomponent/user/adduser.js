@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Users from "./useraxios";
 import { Navbar } from "react-bootstrap";
+import "../login.css"
 class Adduserr extends Component {
   constructor(props) {
     super(props);
@@ -50,33 +51,37 @@ submit = () => {
         <div >
         <h3 align='center'>Register New User  </h3> 
                <div className='form-group row'>
-               <label style={{fontFamily:"-moz-initial" ,fontSize:20}} class="col-sm-2 col-form-label">User Id</label>
+               <label  for="choose"  style={{fontFamily:"-moz-initial" ,fontSize:20}} class="col-sm-2 col-form-label">User Id</label>
                <input 
                type='text'class="col-sm-9" 
                placeholder='User_Id'  
                name='User_Id'
                defaultValue={this.state.User_Id}
                onChange={this.handleAllChanges.bind(this)}
+               required minlength="2"
                
                />
                </div><br/>
 
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>User name</label>
+               <label for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>User name</label>
                <input type='text' class="col-sm-9" 
                placeholder='User_name' 
                name='User_name'
                defaultValue={this.state.User_name}
                onChange={this.handleAllChanges.bind(this)}
+               required  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
                
                />
                </div><br/>
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>User Type</label>
+               <label for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>User Type</label>
                <select class="col-sm-9"
                name='User_Type'
                 onChange={this.handleAllChanges.bind(this)}
                 value={this.props.User_Type}
+                required minlength="3"
+               
                 >
                  <option value="Select">Select</option>
                  <option value="Admin">Admin</option>
@@ -92,6 +97,7 @@ submit = () => {
                  name='Password'
                  onChange={this.handleAllChanges.bind(this)}
                  defaultValue={this.props.Password}
+                 required minlength="3"
                  />
                </div><br/>
                <div align='center'>

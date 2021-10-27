@@ -11,7 +11,7 @@ import MainReduxComponent from './redux/main';
 // import Radio from './components/20/3/radio'
 // import SelectCom from './components/Multiselect,'
 // import Table from './components/20/1/table'
-// import Form from './components/22/1/form'
+import Form from './components/22/1/form'
 //import Pratice from './components/pratice'
 // import SecureHttpCallComponent from './hospitaltest/httpsecurecomponent'
 let store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__());
@@ -27,7 +27,7 @@ ReactDOM.render(
        {/* <Drop /> */}
        {/* <ChildComponent /> */}
        {/* <Table /> */}
-       {/* <Form /> */}
+       <Form />
        {/* <SecureHttpCallComponent /> */}
        {/* <TableComponent /> */}
        {/* <SecureHttpCallComponent/> */}

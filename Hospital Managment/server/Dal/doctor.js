@@ -50,13 +50,17 @@ else {
     });
 }
  }
-    // async getdoctorinfo(req, resp) {
-    //     await sequelize.sync({ force: false });
-    //     let rows = await DoctorModel
-    //         .findAll();
-    //     if (rows) {
-    //         return resp.status(200).send({
-    //             ro
+//
+async billcharges(req, resp) {
+    const id = req.params.dname;
+    console.log(`dnameeeeeee${id}`)
+        await sequelize.sync({ force: false });
+        let rows = await DoctorModel.findOne({ where: { dname: id } });
+        console.log(`fesssss:-${rows.dataValues['dfeespervisit']}`)
+        return resp.status(200).send({ message: rows.dataValues['dfeespervisit'] });
+       
+   
+}
 
     ///Post docient details
     async postdoctorinfo(req, resp) {

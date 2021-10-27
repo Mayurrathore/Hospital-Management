@@ -1,5 +1,12 @@
 import axios from 'axios';
 class Medicineaxios {
+    
+postpatmeddata(Patient){
+        let response=axios.post(`http://localhost:9082/api/patmed/`,Patient);
+        return response;   
+}
+
+   
 //Gte doctor info
 getmedicine(token){
         let response = axios.get('http://localhost:9082/api/medicineDetails',{

@@ -9,7 +9,8 @@ module.exports = function(sequelize, DataTypes) {
     },
     dname: {
       type: DataTypes.STRING(45),
-      allowNull: false
+      allowNull: false,
+      unique: "dname_UNIQUE"
     },
     daddress: {
       type: DataTypes.STRING(45),
@@ -50,6 +51,14 @@ module.exports = function(sequelize, DataTypes) {
         using: "BTREE",
         fields: [
           { name: "did" },
+        ]
+      },
+      {
+        name: "dname_UNIQUE",
+        unique: true,
+        using: "BTREE",
+        fields: [
+          { name: "dname" },
         ]
       },
     ]

@@ -15,12 +15,7 @@ body {
     margin: 0px 40px
 }
 
-.logo {
-    width: 200px;
-    height: 100px;
-    margin-top: 20px;
-    margin-left: 35px
-}
+
 
 .image {
     width: 360px;
@@ -32,6 +27,13 @@ body {
 }
 
 
+input:invalid {
+    border: 5px solid red;
+  }
+   
+  input:valid {
+    border: 2px solid black;
+  }
 
 
 

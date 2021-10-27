@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Doctoraxios from "./Doctoraxios";
 import { Navbar } from "react-bootstrap";
+import "../login.css"
 class Adddoctor extends Component {
   constructor(props) {
     super(props);
@@ -59,60 +60,66 @@ submit = () => {
         <div >
         <h3 align='center'>Register New Doctor </h3> 
                <div className='form-group row'>
-               <label style={{fontFamily:"-moz-initial" ,fontSize:20}} class="col-sm-2 col-form-label">Doctor Id</label>
+               <label for="choose" style={{fontFamily:"-moz-initial" ,fontSize:20}} class="col-sm-2 col-form-label">Doctor Id</label>
                <input 
                type='text'class="col-sm-9" 
                placeholder=' Doctor_Id'  
                name=' Doctor_Id'
                defaultValue={this.state.Doctor_Id}
                onChange={this.handleAllChanges.bind(this)}
+               id="choose"
+               required minlength="0"
                
                />
                </div><br/>
 
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor Name</label>
+               <label  for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor Name</label>
                <input type='text' class="col-sm-9" 
                placeholder='Doctor_Name' 
                name='Doctor_Name'
                onChange={this.handleAllChanges.bind(this)}
                defaultValue={this.state.Doctor_Name}
+               required minlength="3"
                />
                </div><br/>
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor Address</label>
+               <label  for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor Address</label>
                <input type='text' 
                class="col-sm-9" 
                placeholder='Doctor_Address' 
                name='Doctor_Address'
                onChange={this.handleAllChanges.bind(this)}
                value={this.props.Doctor_Address}
+               required minlength="3"
                />
                </div><br/>
 
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor City</label>
+               <label  for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor City</label>
                <input type='text' 
                class="col-sm-9" 
                placeholder='Doctor_City' 
                name='Doctor_City'
                onChange={this.handleAllChanges.bind(this)}
                value={this.props.Doctor_City}
+               required minlength="3"
                />
                </div><br/>
 
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor Age</label>
+               <label  for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor Age</label>
                <input type='text'
                 class="col-sm-9"
                  placeholder='Doctor_Age' 
                  name='Doctor_Age'
                  onChange={this.handleAllChanges.bind(this)}
                  defaultValue={this.props.Doctor_Age}
+                 required minlength="2"
                  />
                </div><br/>
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor Gender</label>
+               <label  for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Doctor Gender</label>
                <select class="col-sm-9"
                name='Doctor_Gender'
                 onChange={this.handleAllChanges.bind(this)}
@@ -125,35 +132,38 @@ submit = () => {
                </div><br/>
 
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Specalization</label>
+               <label  for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Specalization</label>
                <input type='text'
                 class="col-sm-9"
                  placeholder='Doctor_Specalization'
                  name='Doctor_specalization'
                   onChange={this.handleAllChanges.bind(this)}
                   value={this.props.Doctor_specalization}
+                  required minlength="3"
                   />
                </div><br/>
 
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Mobile No</label>
+               <label  for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Mobile No</label>
                <input type='text'
                 class="col-sm-9"
                  placeholder='Patient Disease'
                  name='Doctor_Mobile_No'
                   onChange={this.handleAllChanges.bind(this)}
                   value={this.props.Doctor_Mobile_No}
+                  required minlength="3"
                   />
                </div><br/>
 
                <div className='form-group row'>
-               <label class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Fess per vist</label>
+               <label  for="choose" class="col-sm-2 col-form-label" style={{fontFamily:"-moz-initial" ,fontSize:20}}>Fess per vist</label>
                <input type='text'
                 class="col-sm-9"
                 placeholder='Doctor_fess_per_vist'
                 name='Doctor_fess_per_vist'
                 onChange={this.handleAllChanges.bind(this)}
                   value={this.props.Doctor_fess_per_vist}
+                  required minlength="3"
                  ></input>
                </div><br/>
                <div align='center'>

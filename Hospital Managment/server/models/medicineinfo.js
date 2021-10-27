@@ -27,7 +27,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.DATEONLY,
       allowNull: false
     },
-    price: {
+    unitprice: {
       type: DataTypes.INTEGER,
       allowNull: false
     }

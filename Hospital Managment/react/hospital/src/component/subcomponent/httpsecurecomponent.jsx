@@ -3,6 +3,7 @@ import Loginaxios from "./loginaxios";
 import logo from "./image/new.png"
 import dd from "./image/hhh.png"
 import "../subcomponent/login.css"
+import './login.css'
 class HttpCallComponent extends Component {
   constructor(props) {
     super(props);
@@ -45,10 +46,12 @@ auth() {
   // validation logic
 validateInputs=(name,value)=>{
     if(name === 'AuthUserName'){
-        if(value.length === 0) {
+        if(value.length === 4) {
             this.setState({isAuthUserName:false});
             this.setState({isFormValid:false});
-            alert('Enter valid email')
+            <span>
+              Enter a valid Id
+            </span>
         }else {
             this.setState({isAuthUserName:true});
             this.setState({isFormValid:true});
@@ -74,8 +77,16 @@ validateInputs=(name,value)=>{
         <div class="row d-flex">
             <div class="col-lg-6">
                 <div class="card1 pb-5"> 
-                    <div class="row" > <img src={logo} class="logo"/> </div> 
-                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src={dd} class="image"/> </div>
+                    <div class="row" > <img src={logo} 
+                    style={{
+                      width: '200px',
+                      height:' 100px',
+                      marginTop: '20px',
+                      marginLeft: '35px'
+                    }}
+                    class="logo"/> </div> 
+                    <div class="row px-3 justify-content-center mt-4 mb-5 border-line"> <img src={dd}
+                    style={{height:500}} class="image"/> </div>
                 </div>
             </div>
             <div class="col-lg-6">
@@ -84,21 +95,30 @@ validateInputs=(name,value)=>{
                     <div class="row mb-4 px-3">
                         <h5 class="mb-0 mr-4 mt-2">Login</h5><br/><br/>
                     </div>
-                    <div class="row px-3"> <label class="mb-1"><h6 class="mb-0 text-sm">Email Address</h6></label> 
+                    <div class="row px-3"> <label for="choose" class="mb-1"><h6 class="mb-0 text-sm">User Name</h6></label> 
                     <input class="mb-4" 
                     type="text" 
+                    id="choose"
                     placeholder="Enter a valid email address"
                     name="AuthUserName"
                     Value={this.state.AuthUserName}
                     onChange={this.handleInPutChanges.bind(this)}
+                    required minlength="3"
                     /> </div>
-                    <div class="row px-3"> <label class="mb-1"><h6 class="mb-0 text-sm">Password</h6></label> 
+                    
+                    <div class="row px-3"> <label for="choose" class="mb-1"><h6 class="mb-0 text-sm">Password</h6></label> 
                     <input type="password"
                     placeholder="Enter password"
+                    id="choose"
                     name='AuthPassword'
                    Value={this.state.AuthPassword}
-                   onChange={this.handleInPutChanges.bind(this)}/> </div><br/>
-                    <div className="container" style={{color:"red" ,fontFamily:'cursive'}}> <strong>{this.state.message}</strong></div><br/>
+                   onChange={this.handleInPutChanges.bind(this)}
+                   required minlength="3"
+                   /> </div><br/>
+                    <div className="container" style={{color:"red" ,fontFamily:'cursive'}}> 
+                    <strong>{this.state.message}</strong></div>
+
+                    <br/>
                     <div class="row mb-3 px-3"> 
                     <input type="button" 
                     class="btn btn-primary text-center"

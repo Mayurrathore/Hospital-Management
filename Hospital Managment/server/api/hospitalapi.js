@@ -11,8 +11,10 @@ const RoomWardDataAccess=require('./../Dal/roomward')
 const CantineDataAccess=require('./../Dal/cantine')
 const Authlogin=require('./../Dal/tokenlogic')
 const AuthLogic=require('./../Dal/user')
-
+const dischargeDataAccess=require('./../Dal/discharge')
 const instance = express();
+const billDataAccess =require('./../Dal/bill')
+const patmadDataAccess =require('./../Dal/patmed')
 
 instance.use(express.urlencoded({ extended: false }));
 instance.use(express.json());
@@ -39,13 +41,21 @@ instance.post('/api/app/register', auth.registerUser);
 instance.get('/api/app/auth',auth.getuserdata)
 instance.delete('/api/app/delete/:UserId',auth.deluser)
 
+
+//discharge  
+
+let objdis =new dischargeDataAccess();
+instance.post("/api/dischargedetail",objdis.postdischargeinfo);
+instance.get("/api/dischargedetail",objdis.getdischarge);
 //patient
 let objpat =new PatientDataAccess();
 instance.get("/api/patientDetails/", objpat.getpatientinfo);
 instance.post("/api/patientDetails/", objpat.postpatientinfo);
 instance.put('/api/patientDetails/:ptid', objpat.putpatientinfo);
 instance.delete('/api/patientDetails/:ptid', objpat.delpatient);
-instance.get('/api/patientDetails/:ptid',objpat.getpatientbyid);
+instance.get('/api/mypatientDetails/:dname',objpat.getpatientbyid);
+
+
 
 //Doctor
 let objdoc =new DoctorDataAccess();
@@ -53,6 +63,7 @@ instance.get("/api/doctorDetails/", objdoc.getdoctorinfo);
 instance.post("/api/doctorDetails/", objdoc.postdoctorinfo);
 instance.put('/api/doctorDetails/:did', objdoc.putdocientinfo);
 instance.delete('/api/doctorDetails/:did', objdoc.deldoctor);
+instance.get('/api/billdoctorDetails/:dname',objdoc.billcharges);
 
 //Nurse
 let objnur =new NurseDataAccess();
@@ -97,6 +108,7 @@ instance.get("/api/roomwardDetails/", objrowr.getroomwardinfo);
 instance.post("/api/roomwardDetails/", objrowr.postroomwardinfo);
 instance.put('/api/roomwardDetails/:idwr', objrowr.putroomwardinfo);
 instance.delete('/api/roomwardDetails/:idwr', objrowr.delroomward);
+instance.get("/api/feesroomwardDetails/:idwr", objrowr.getroomwardfees);
 
 //cantine
 let objcan =new CantineDataAccess();
@@ -105,6 +117,13 @@ instance.post("/api/cantineDetails/", objcan.postcantineinfo);
 instance.put('/api/cantineDetails/:foodid', objcan.putcantineinfo);
 instance.delete('/api/cantineDetails/:foodid', objcan.delcantine);
 
+//bill
+let objbill =new billDataAccess();
+instance.post("/api/billpost/",objbill.postbilldata);
+//patmed
+let objpatmad =new patmadDataAccess();
+instance.post("/api/patmed/",objpatmad.postpatmeddata);
+instance.get("/api/patmed/:ptid",objpatmad.getpatmed)
 
 instance.listen(9082, () => {
     console.log("REST APIs are on port 9082");
